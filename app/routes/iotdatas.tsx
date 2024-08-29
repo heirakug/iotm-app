@@ -1,7 +1,7 @@
-// app/routes/iotdatas.tsx
-
-import { Outlet, Link, useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
+// import { Outlet, Link, useLoaderData } from "@remix-run/react";
+import { Outlet, Link } from "@remix-run/react";
+
 import { getIoTDataList } from "~/models/iotData.server";
 
 export const loader = async () => {
@@ -10,7 +10,7 @@ export const loader = async () => {
 };
 
 export default function IoTDataLayout() {
-  const { ioTDataList } = useLoaderData<typeof loader>();
+  // const { ioTDataList } = useLoaderData<typeof loader>();
 
   return (
     <div className="flex h-full min-h-screen flex-col">

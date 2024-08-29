@@ -1,13 +1,12 @@
-// app/routes/iotdatas.new.tsx
-
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
-import { createIoTData } from "~/models/iotData.server";
-import { requireUserId } from "~/session.server";
+
+// import { createIoTData } from "~/models/iotData.server";
+// import { requireUserId } from "~/session.server";
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  const userId = await requireUserId(request);
+  // const userId = await requireUserId(request);
   const formData = await request.formData();
   const deviceId = formData.get("deviceId");
   const data = formData.get("data");
@@ -26,7 +25,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     );
   }
 
-  const iotData = await createIoTData({ deviceId, data, userId });
+  // const iotData = await createIoTData({ deviceId, data, userId });
 
   return redirect(`/iotdatas`);
 };
@@ -53,11 +52,11 @@ export default function NewIoTDataPage() {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             />
-            {actionData?.errors?.deviceId && (
-              <p className="mt-2 text-sm text-red-600" id="deviceId-error">
-                {actionData.errors.deviceId}
-              </p>
-            )}
+            {actionData?.errors?.deviceId ? (
+  <p className="mt-2 text-sm text-red-600" id="deviceId-error">
+    {actionData.errors.deviceId}
+  </p>
+) : null}
           </div>
 
           <div>
@@ -71,11 +70,11 @@ export default function NewIoTDataPage() {
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
               required
             ></textarea>
-            {actionData?.errors?.data && (
+            {actionData?.errors?.data ? (
               <p className="mt-2 text-sm text-red-600" id="data-error">
                 {actionData.errors.data}
               </p>
-            )}
+            ) : null}
           </div>
 
           <button

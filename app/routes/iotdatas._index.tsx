@@ -1,7 +1,6 @@
-// app/routes/iotdatas._index.tsx
-
-import { useLoaderData } from "@remix-run/react";
 import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
+
 import { getIoTDataList } from "~/models/iotData.server";
 
 export const loader = async () => {
