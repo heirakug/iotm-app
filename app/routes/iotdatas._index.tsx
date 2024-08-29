@@ -1,5 +1,5 @@
 import { json } from "@remix-run/node";
-import { useLoaderData } from "@remix-run/react";
+import { useLoaderData, Link } from "@remix-run/react";
 
 import { getIoTDataList } from "~/models/iotData.server";
 
@@ -20,10 +20,18 @@ export default function IoTDataIndex() {
           <h2 className="text-xl font-bold mb-4">Recent IoT Data</h2>
           <ul>
             {ioTDataList.map((entry) => (
-              <li key={entry.id} className="mb-2 p-4 border rounded-md shadow-sm">
+              <li key={entry.id} className="mb-4 p-4 border rounded-md shadow-sm">
                 <p><strong>Device ID:</strong> {entry.deviceId}</p>
                 <p><strong>Timestamp:</strong> {new Date(entry.timestamp).toLocaleString()}</p>
                 <p><strong>Data:</strong> {entry.data}</p>
+                <div className="mt-2">
+                  <Link
+                    to={`/iotdatas/${entry.id}/edit`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    Edit
+                  </Link>
+                </div>
               </li>
             ))}
           </ul>
