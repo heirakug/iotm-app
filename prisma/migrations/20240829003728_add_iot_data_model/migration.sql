@@ -1,0 +1,10 @@
+-- CreateTable
+CREATE TABLE "IoTData" (
+    "id" TEXT NOT NULL,
+    "deviceId" TEXT NOT NULL,
+    "timestamp" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "data" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "IoTData_pkey" PRIMARY KEY ("id")
+);

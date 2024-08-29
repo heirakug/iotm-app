@@ -1,6 +1,10 @@
 import type { ActionFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useActionData } from "@remix-run/react";
+import { 
+  Form,
+  useActionData,
+  Link,
+ } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 
 import { createNote } from "~/models/note.server";
@@ -96,7 +100,13 @@ export default function NewNotePage() {
         ) : null}
       </div>
 
-      <div className="text-right">
+      <div className="text-right flex justify-end gap-2">
+        <Link
+          to="/notes"
+          className="rounded bg-gray-500 px-4 py-2 text-white hover:bg-gray-600 focus:bg-gray-400"
+        >
+          Cancel
+        </Link>
         <button
           type="submit"
           className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
