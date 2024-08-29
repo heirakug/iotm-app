@@ -41,7 +41,7 @@ export async function updateIoTData({
   deviceId,
   data,
 }: {
-  id: string;
+  id?: string;
   deviceId?: string;
   data?: string;
 }) {

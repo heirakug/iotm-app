@@ -18,10 +18,17 @@ import { requireUserId } from "~/session.server";
 
 export const loader = async ({ params, request }: LoaderFunctionArgs) => {
   await requireUserId(request);
-  const iotData = await getIoTData(params.iotId);
+  const { iotId } = params;
+
+  if (typeof iotId !== "string") {
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  const iotData = await getIoTData(iotId);
   if (!iotData) {
     throw new Response("Not Found", { status: 404 });
   }
+
   return json({ iotData });
 };
 
