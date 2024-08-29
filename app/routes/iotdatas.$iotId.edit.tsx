@@ -27,11 +27,17 @@ export const loader = async ({ params, request }: LoaderFunctionArgs) => {
 
 export const action = async ({ request, params }: ActionFunctionArgs) => {
   await requireUserId(request);
+  const iotId = params.iotId;
+
+  if (typeof iotId !== "string") {
+    throw new Response("Bad Request", { status: 400 });
+  }
+
   const formData = await request.formData();
   const intent = formData.get("intent");
 
   if (intent === "delete") {
-    await deleteIoTData(params.iotId);
+    await deleteIoTData(iotId);
     return redirect("/iotdatas");
   }
 
