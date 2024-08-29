@@ -9,7 +9,7 @@ export const action: ActionFunction = async ({ request }) => {
     return json({ error: "Invalid input" }, { status: 400 });
   }
 
-  await createIoTData({ deviceId, data userId});
+  await createIoTData({ deviceId, data, userId});
 
   return json({ success: true });
 };
