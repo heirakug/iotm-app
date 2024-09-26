@@ -13,6 +13,7 @@ export default function Index() {
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <div className="relative shadow-xl sm:overflow-hidden sm:rounded-2xl">
             {/* アニメーション */}
+            {/* devテスト */}
             <div className="absolute inset-0">
               <div className="absolute inset-0 bg-black bg-opacity-80 mix-blend-multiply" />
               <div className="absolute inset-0">
